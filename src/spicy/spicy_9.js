@@ -15,7 +15,11 @@
  *                from calling the function
  */
 export const repeat = (fn, n, ...params) => {
-    
+    var output = [];
+    for (var i=0; i<n; i++) {
+        output.push(fn(params));
+    }
+    return output;
 };
 
 
@@ -24,7 +28,7 @@ export const repeat = (fn, n, ...params) => {
  *   10 times.
  */
 export const repeatDemo = () => {
-    
+    repeat(print, 10, ['Hello, world!']);
 };
 
 
