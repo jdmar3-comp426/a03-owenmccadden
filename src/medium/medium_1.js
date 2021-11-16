@@ -12,7 +12,7 @@ export function getSum(array) {
     for (var i=0; i<array.length; i++) {
         sum += array[i];
     }
-    return sum / array.length;
+    return sum;
 }
 
 
@@ -28,9 +28,9 @@ export function getSum(array) {
 export function getMedian(array) {
     array.sort();
     if (array.length % 2 == 0) {
-        return (array[array.length/2] + array[(array.length/2)+1]) / 2;
+        return (array[Math.floor(array.length / 2)-1] + array[Math.floor(array.length / 2)]) / 2;
     } else {
-        return array[Math.floor(array.length / 2)];
+        return array[Math.floor(array.length / 2)-1];
     }
 }
 
