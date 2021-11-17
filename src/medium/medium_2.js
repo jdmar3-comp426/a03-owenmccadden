@@ -88,6 +88,20 @@ export const allCarStats = {
  * }
  */
 export const moreStats = {
-    makerHybrids: undefined,
+    makerHybrids: mpg_data.map(function(obj){
+        var result = {
+            make: obj.make,
+            hybrids: [
+
+            ]
+        }
+
+        for (var make in obj) {
+            if (obj.hasOwnProperty(make) && obj.hybrid === true) {
+                result.hybrids.push(obj.id);
+            }
+        }
+        return result;
+    }),
     avgMpgByYearAndHybrid: undefined
 };
