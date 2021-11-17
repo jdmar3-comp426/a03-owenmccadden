@@ -88,20 +88,22 @@ export const allCarStats = {
  * }
  */
 export const moreStats = {
-    makerHybrids: mpg_data.reduce(,
-    avgMpgByYearAndHybrid: mpg_data.reduce((obj, {year}) => {
-        if (!(year in obj)) {
-            obj[year] = {
-                hybrid: {
-                    city: mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).reduce(function(a, b) {return a + b.city_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).length,
-                    highway: mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).reduce(function(a, b) {return a + b.highway_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).length
-                },
-                notHybrid: {
-                    city: mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).reduce(function(a, b) {return a + b.city_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).length,
-                    highway: mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).reduce(function(a, b) {return a + b.highway_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).length
-                }
-            }
-        }
-        return obj;
-    }, {})
+    makerHybrids: 0,
+    avgMpgByYearAndHybrid: 0
+    
+    // mpg_data.reduce((obj, {year}) => {
+    //     if (!(year in obj)) {
+    //         obj[year] = {
+    //             hybrid: {
+    //                 city: mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).reduce(function(a, b) {return a + b.city_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).length,
+    //                 highway: mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).reduce(function(a, b) {return a + b.highway_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).length
+    //             },
+    //             notHybrid: {
+    //                 city: mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).reduce(function(a, b) {return a + b.city_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).length,
+    //                 highway: mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).reduce(function(a, b) {return a + b.highway_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).length
+    //             }
+    //         }
+    //     }
+    //     return obj;
+    // }, {})
 };
