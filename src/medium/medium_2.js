@@ -25,8 +25,8 @@ export const allCarStats = {
         'city': mpg_data.reduce(function(a, b) {return a + b.city_mpg}, 0) / mpg_data.length,
         'highway': mpg_data.reduce(function(a, b) {return a + b.highway_mpg}, 0) / mpg_data.length,
     },
-    allYearStats: undefined,
-    ratioHybrids: undefined,
+    allYearStats: getStatistics(mpg_data.map(a => a.year)),
+    ratioHybrids: mpg_data.filter((obj) => obj.hybrid === true).length / mpg_data.length
 };
 
 
