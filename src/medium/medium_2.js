@@ -102,6 +102,6 @@ export const moreStats = {
                 }
             }
         }
-
+        return obj;
     }, {})
 };
