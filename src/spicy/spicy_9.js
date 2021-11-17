@@ -28,7 +28,7 @@ export const repeat = (fn, n, ...params) => {
  *   10 times.
  */
 export const repeatDemo = () => {
-    return repeat(print, 10, ['Hello, world!']);
+    return repeat(console.log, 10, ['Hello, world!']);
 };
 
 
@@ -155,7 +155,7 @@ export const someEven = (arr, test) => {
  *       -->  { pass: [1, 5, 31], fail: [90] }
  */
 export const filter = (arr, test) => {
-    var result = {fail: [], pass: []};
+    var result = {pass: [], fail: []};
     for (var i=0; i<arr.length; i++) {
         if (test(arr[i])) {
             result.pass.push(arr[i]);
