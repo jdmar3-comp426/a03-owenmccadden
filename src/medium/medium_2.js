@@ -93,12 +93,12 @@ export const moreStats = {
         if (!(year in obj)) {
             obj[year] = {
                 hybrid: {
-                    city: 0,
-                    highway: 0
+                    city: mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).reduce(function(a, b) {return a + b.city_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).length,
+                    highway: mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).reduce(function(a, b) {return a + b.highway_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).length
                 },
                 notHybrid: {
-                    city: 0,
-                    highway: 0
+                    city: mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).reduce(function(a, b) {return a + b.city_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).length,
+                    highway: mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).reduce(function(a, b) {return a + b.highway_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).length
                 }
             }
         }
