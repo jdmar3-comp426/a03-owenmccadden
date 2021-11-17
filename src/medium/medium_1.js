@@ -33,7 +33,7 @@ export function getMedian(array) {
         return (array[mid] + array[mid2]) / 2;
     } else {
         return array[mid];
-    }
+    } 
 }
 
 /**
