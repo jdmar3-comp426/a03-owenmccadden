@@ -88,8 +88,8 @@ export const allCarStats = {
  * }
  */
 export const moreStats = {
-    makerHybrids: 0,
-    avgMpgByYearAndHybrid: mpg_data.reduce((obj, {year, ...rest}) => {
+    makerHybrids: mpg_data.reduce(,
+    avgMpgByYearAndHybrid: mpg_data.reduce((obj, {year}) => {
         if (!(year in obj)) {
             obj[year] = {
                 hybrid: {
