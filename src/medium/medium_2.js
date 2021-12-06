@@ -19,10 +19,14 @@ see under the methods section
  *
  * @param {allCarStats.ratioHybrids} ratio of cars that are hybrids
  */
+
 export const allCarStats = {
-    avgMpg: undefined,
-    allYearStats: undefined,
-    ratioHybrids: undefined,
+    avgMpg: {
+        'city': mpg_data.reduce(function(a, b) {return a + b.city_mpg}, 0) / mpg_data.length,
+        'highway': mpg_data.reduce(function(a, b) {return a + b.highway_mpg}, 0) / mpg_data.length,
+    },
+    allYearStats: getStatistics(mpg_data.map(a => a.year)),
+    ratioHybrids: mpg_data.filter((obj) => obj.hybrid === true).length / mpg_data.length
 };
 
 
@@ -84,6 +88,20 @@ export const allCarStats = {
  * }
  */
 export const moreStats = {
-    makerHybrids: undefined,
-    avgMpgByYearAndHybrid: undefined
+    makerHybrids: 0,
+    avgMpgByYearAndHybrid: mpg_data.reduce((obj, {year}) => {
+        if (!(year in obj)) {
+            obj[year] = {
+                hybrid: {
+                    city: mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).reduce(function(a, b) {return a + b.city_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).length,
+                    highway: mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).reduce(function(a, b) {return a + b.highway_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === true && obj.year == year).length
+                },
+                notHybrid: {
+                    city: mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).reduce(function(a, b) {return a + b.city_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).length,
+                    highway: mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).reduce(function(a, b) {return a + b.highway_mpg}, 0) / mpg_data.filter((obj) => obj.hybrid === false && obj.year == year).length
+                }
+            }
+        }
+        return obj;
+    }, {})
 };
